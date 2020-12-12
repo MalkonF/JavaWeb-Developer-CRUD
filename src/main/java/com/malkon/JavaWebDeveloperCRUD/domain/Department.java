@@ -19,6 +19,7 @@ public class Department implements Serializable {
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
+	@org.hibernate.annotations.Type(type = "org.hibernate.type.UUIDCharType")
 	private UUID id;
 	private Integer code;
 	private String name;

@@ -1,13 +1,30 @@
 package com.malkon.JavaWebDeveloperCRUD.resources;
 
+import java.util.UUID;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.malkon.JavaWebDeveloperCRUD.domain.Department;
+import com.malkon.JavaWebDeveloperCRUD.services.DepartmentService;
 
+@RestController
+@RequestMapping(value = "/departments")
 public class DepartmentResource {
+	
+	@Autowired
+	DepartmentService departmentService;
 
-	public ResponseEntity<Department> find(Integer code) {
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Department> find(@PathVariable UUID id) {
 
-		return null;
+		Department obj = departmentService.find(id);
+
+		return ResponseEntity.ok().body(obj);
 
 	}
 
