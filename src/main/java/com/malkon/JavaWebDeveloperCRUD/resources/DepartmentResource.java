@@ -4,7 +4,7 @@ import org.springframework.http.ResponseEntity;
 import com.malkon.JavaWebDeveloperCRUD.domain.Department;
 
 public class DepartmentResource {
-	
+
 	public ResponseEntity<Department> find(Integer code) {
 
 		return null;
@@ -26,5 +26,3 @@ public class DepartmentResource {
 		return null;
 	}
 }
-
-
