@@ -23,7 +23,7 @@ public class Product implements Serializable {
 	@Id
 	@GeneratedValue(generator = "system-uuid")
 	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
-	private UUID id = UUID.randomUUID();
+	private UUID id;
 	private String code;
 	private String description;
 	@JsonIgnore

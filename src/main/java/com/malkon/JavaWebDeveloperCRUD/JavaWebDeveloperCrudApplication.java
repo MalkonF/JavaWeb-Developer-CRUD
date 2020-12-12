@@ -1,6 +1,7 @@
 package com.malkon.JavaWebDeveloperCRUD;
 
 import java.util.Arrays;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.malkon.JavaWebDeveloperCRUD.domain.Client;
 import com.malkon.JavaWebDeveloperCRUD.domain.Department;
 import com.malkon.JavaWebDeveloperCRUD.domain.Product;
+import com.malkon.JavaWebDeveloperCRUD.repositories.ClientRepository;
 import com.malkon.JavaWebDeveloperCRUD.repositories.DepartmentRepository;
 import com.malkon.JavaWebDeveloperCRUD.repositories.ProductRepository;
 
@@ -21,6 +23,9 @@ public class JavaWebDeveloperCrudApplication implements CommandLineRunner {
 
 	@Autowired
 	ProductRepository productRepository;
+
+	@Autowired
+	ClientRepository clientRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(JavaWebDeveloperCrudApplication.class, args);
@@ -53,12 +58,12 @@ public class JavaWebDeveloperCrudApplication implements CommandLineRunner {
 		Product prod11 = new Product(null, "KK90", "Jogo de Xadrez OMNI CLASS", 39.89, true);
 		Product prod12 = new Product(null, "KK90", "Fita adesiva DUREX", 6.29, true);
 
-		Client cli1 = new Client(null, null, "Kegyu Guida");
-		Client cli2 = new Client(null, null, "Miohu Daein");
-		Client cli3 = new Client(null, null, "Kauvi Hifio");
-		Client cli4 = new Client(null, null, "Befey Saoen");
-		Client cli5 = new Client(null, null, "Lyeko Ceotirun");
-		Client cli6 = new Client(null, null, "Mebol Morui");
+		Client cli1 = new Client(null, UUID.randomUUID(), "Kegyu Guida");
+		Client cli2 = new Client(null, UUID.randomUUID(), "Miohu Daein");
+		Client cli3 = new Client(null, UUID.randomUUID(), "Kauvi Hifio");
+		Client cli4 = new Client(null, UUID.randomUUID(), "Befey Saoen");
+		Client cli5 = new Client(null, UUID.randomUUID(), "Lyeko Ceotirun");
+		Client cli6 = new Client(null, UUID.randomUUID(), "Mebol Morui");
 
 		dep1.getProducts().addAll(Arrays.asList(prod6));
 		dep2.getProducts().addAll(Arrays.asList(prod7));
@@ -86,6 +91,7 @@ public class JavaWebDeveloperCrudApplication implements CommandLineRunner {
 		departmentRepository.saveAll(Arrays.asList(dep1, dep2, dep3, dep4, dep5, dep6, dep7, dep8, dep9));
 		productRepository.saveAll(
 				Arrays.asList(prod1, prod2, prod3, prod4, prod5, prod6, prod7, prod8, prod9, prod10, prod11, prod12));
+		clientRepository.saveAll(Arrays.asList(cli1, cli2, cli3, cli4, cli5, cli6));
 
 	}
 

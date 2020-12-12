@@ -15,9 +15,9 @@ public class Client implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(generator = "system-uuid")
-	@GenericGenerator(name = "system-uuid", strategy = "uuid")
-	private UUID id = UUID.randomUUID();
-	private UUID code = UUID.randomUUID();
+	@GenericGenerator(name = "system-uuid", strategy = "uuid2")
+	private UUID id;
+	private UUID code;
 	private String name;
 
 	public Client(UUID id, UUID code, String name) {
