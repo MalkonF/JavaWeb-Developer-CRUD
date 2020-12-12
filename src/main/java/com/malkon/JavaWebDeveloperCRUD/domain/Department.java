@@ -5,13 +5,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+import org.hibernate.annotations.GenericGenerator;
+
+@Entity
 public class Department implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	@Id
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	private UUID id = UUID.randomUUID();
 	private Integer code;
 	private String name;
+	@ManyToMany(mappedBy = "departments")
 	private List<Product> products = new ArrayList<>();
 
 	public Department(UUID id, Integer code, String name) {

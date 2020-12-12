@@ -5,13 +5,30 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+import org.hibernate.annotations.GenericGenerator;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
 public class Product implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	@Id
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid")
 	private UUID id = UUID.randomUUID();
 	private String code;
 	private String description;
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable(name = "PRODUCT_DEPARTMENT", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "department_id"))
 	private List<Department> departments = new ArrayList<>();
 	private Double price;
 	private Boolean status;
