@@ -1,13 +1,16 @@
 package com.malkon.JavaWebDeveloperCRUD.resources;
 
+import java.net.URI;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.malkon.JavaWebDeveloperCRUD.domain.Department;
 import com.malkon.JavaWebDeveloperCRUD.services.DepartmentService;
@@ -15,7 +18,7 @@ import com.malkon.JavaWebDeveloperCRUD.services.DepartmentService;
 @RestController
 @RequestMapping(value = "/departments")
 public class DepartmentResource {
-	
+
 	@Autowired
 	DepartmentService departmentService;
 
@@ -28,9 +31,12 @@ public class DepartmentResource {
 
 	}
 
-	public ResponseEntity<Void> insert(Department department) {
-
-		return null;
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Void> insert(@RequestBody Department department) {
+		department = departmentService.insert(department);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(department.getId())
+				.toUri();
+		return ResponseEntity.created(uri).build();
 	}
 
 	public ResponseEntity<Void> update(Department department, Integer code) {

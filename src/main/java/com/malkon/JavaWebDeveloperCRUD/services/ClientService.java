@@ -21,4 +21,9 @@ public class ClientService {
 
 	}
 
+	public Client insert(Client client) {
+		client.setId(null);
+		return clientRepository.save(client);
+	}
+
 }

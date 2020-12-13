@@ -11,14 +11,19 @@ import com.malkon.JavaWebDeveloperCRUD.repositories.ProductRepository;
 
 @Service
 public class ProductService {
-	
+
 	@Autowired
 	ProductRepository productRepository;
-	
+
 	public Product find(UUID code) {
 		Optional<Product> obj = productRepository.findById(code);
 		return obj.orElseThrow();
 
+	}
+
+	public Product insert(Product product) {
+		product.setId(null);
+		return productRepository.save(product);
 	}
 
 }

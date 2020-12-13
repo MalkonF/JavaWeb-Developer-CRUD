@@ -11,14 +11,19 @@ import com.malkon.JavaWebDeveloperCRUD.repositories.DepartmentRepository;
 
 @Service
 public class DepartmentService {
-	
+
 	@Autowired
 	DepartmentRepository departmentRepository;
-	
+
 	public Department find(UUID id) {
 		Optional<Department> obj = departmentRepository.findById(id);
 		return obj.orElseThrow();
 
+	}
+
+	public Department insert(Department department) {
+		department.setId(null);
+		return departmentRepository.save(department);
 	}
 
 }
