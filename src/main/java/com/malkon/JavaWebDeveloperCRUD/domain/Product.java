@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -70,6 +71,7 @@ public class Product implements Serializable {
 		this.description = description;
 	}
 
+	@JsonGetter("departments")
 	public List<Department> getDepartments() {
 		return departments;
 	}
