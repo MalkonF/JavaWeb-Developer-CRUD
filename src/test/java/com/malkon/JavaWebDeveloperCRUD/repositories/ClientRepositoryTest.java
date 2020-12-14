@@ -1,6 +1,7 @@
 package com.malkon.JavaWebDeveloperCRUD.repositories;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,7 +23,18 @@ public class ClientRepositoryTest {
 		Client client = new Client(null, null, "Maradona");
 		clientRepository.save(client);
 		Integer countClient = clientRepository.findAll().size();
-		assertEquals(1, countClient - 6); //6 usuários foram instanciados para popular a base de dados
+		assertEquals(1, countClient - 6); // 6 usuários foram instanciados para popular a base de dados
+	}
+
+	@Test
+	public void checkClientSavedNotNull() {
+		Client client = new Client(null, null, "Chaves");
+		clientRepository.save(client);
+		Integer countClient = clientRepository.findAll().size();
+		assertEquals(1, countClient - 6);
+		Client client1 = clientRepository.findUserByName("Chaves");
+		assertNotNull(client1);
+		assertEquals(client, client1);
 	}
 
 }

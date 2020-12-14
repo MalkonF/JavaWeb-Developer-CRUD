@@ -10,4 +10,6 @@ import com.malkon.JavaWebDeveloperCRUD.domain.Client;
 @Repository
 public interface ClientRepository extends JpaRepository<Client, UUID> {
 
+	Client findUserByName(String string);
+
 }
