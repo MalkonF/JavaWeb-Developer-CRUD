@@ -24,9 +24,7 @@ public class DepartmentResource {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Department> find(@PathVariable UUID id) {
-
 		Department obj = departmentService.find(id);
-
 		return ResponseEntity.ok().body(obj);
 
 	}

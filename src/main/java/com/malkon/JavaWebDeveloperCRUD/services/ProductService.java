@@ -21,7 +21,6 @@ public class ProductService {
 	public Product find(UUID code) {
 		Optional<Product> obj = productRepository.findById(code);
 		return obj.orElseThrow();
-
 	}
 
 	public Product insert(Product product) {
@@ -29,7 +28,6 @@ public class ProductService {
 		// debug purpose System.out.println(product.getDepartments());
 		departmentRepository.saveAll(product.getDepartments());
 		return productRepository.save(product);
-
 	}
 
 	public Product update(Product product) {
@@ -39,7 +37,10 @@ public class ProductService {
 	}
 
 	private void updateData(Product newProduct, Product product) {
+		newProduct.setCode(product.getCode());
 		newProduct.setDescription(product.getDescription());
+		newProduct.setPrice(product.getPrice());
+		newProduct.setStatus(product.getStatus());
 	}
 
 }

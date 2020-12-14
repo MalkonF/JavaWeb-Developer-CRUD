@@ -24,11 +24,8 @@ public class ProductResource {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Product> find(@PathVariable UUID id) {
-
 		Product obj = productService.find(id);
-
 		return ResponseEntity.ok().body(obj);
-
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
@@ -37,11 +34,6 @@ public class ProductResource {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(product.getId())
 				.toUri();
 		return ResponseEntity.created(uri).build();
-	}
-
-	public ResponseEntity<Void> update(Product product, String code) {
-
-		return null;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)

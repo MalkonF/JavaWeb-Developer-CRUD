@@ -24,9 +24,7 @@ public class ClientResource {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Client> find(@PathVariable UUID id) {
-
 		Client obj = clientService.find(id);
-
 		return ResponseEntity.ok().body(obj);
 
 	}
