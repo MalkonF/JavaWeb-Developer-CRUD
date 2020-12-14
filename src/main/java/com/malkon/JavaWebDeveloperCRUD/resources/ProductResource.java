@@ -44,6 +44,13 @@ public class ProductResource {
 		return null;
 	}
 
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody Product product, @PathVariable UUID id) {
+		product.setId(id);
+		product = productService.update(product);
+		return ResponseEntity.noContent().build();// nocontent retorna conteúdo vazio
+	}
+
 	public ResponseEntity<Void> delete(String code) {
 
 		return null;

@@ -26,4 +26,14 @@ public class DepartmentService {
 		return departmentRepository.save(department);
 	}
 
+	public Department update(Department department) {
+		Department newDepartment = find(department.getId());
+		updateData(newDepartment, department);
+		return departmentRepository.save(newDepartment);
+	}
+
+	private void updateData(Department newDepartment, Department department) {
+		newDepartment.setName(department.getName());
+	}
+
 }

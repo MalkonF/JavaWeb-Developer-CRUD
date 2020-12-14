@@ -26,4 +26,14 @@ public class ClientService {
 		return clientRepository.save(client);
 	}
 
+	public Client update(Client client) {
+		Client newClient = find(client.getId());
+		updateData(newClient, client);
+		return clientRepository.save(newClient);
+	}
+
+	private void updateData(Client newClient, Client client) {
+		newClient.setName(client.getName());
+	}
+
 }

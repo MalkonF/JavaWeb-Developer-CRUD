@@ -39,9 +39,11 @@ public class ClientResource {
 		return ResponseEntity.created(uri).build();
 	}
 
-	public ResponseEntity<Void> update(Client client, UUID code) {
-
-		return null;
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody Client client, @PathVariable UUID id) {
+		client.setId(id);
+		client = clientService.update(client);
+		return ResponseEntity.noContent().build();// nocontent retorna conteúdo vazio
 	}
 
 	public ResponseEntity<Void> delete(UUID code) {

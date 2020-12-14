@@ -1,9 +1,7 @@
 package com.malkon.JavaWebDeveloperCRUD.services;
 
-import java.util.Arrays;
 import java.util.Optional;
 import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,9 +26,20 @@ public class ProductService {
 
 	public Product insert(Product product) {
 		product.setId(null);
-		System.out.println(product.getDepartments());
+		// debug purpose System.out.println(product.getDepartments());
 		departmentRepository.saveAll(product.getDepartments());
 		return productRepository.save(product);
+
+	}
+
+	public Product update(Product product) {
+		Product newProduct = find(product.getId());
+		updateData(newProduct, product);
+		return productRepository.save(newProduct);
+	}
+
+	private void updateData(Product newProduct, Product product) {
+		newProduct.setDescription(product.getDescription());
 	}
 
 }

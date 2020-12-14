@@ -39,9 +39,11 @@ public class DepartmentResource {
 		return ResponseEntity.created(uri).build();
 	}
 
-	public ResponseEntity<Void> update(Department department, Integer code) {
-
-		return null;
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody Department department, @PathVariable UUID id) {
+		department.setId(id);
+		department = departmentService.update(department);
+		return ResponseEntity.noContent().build();// nocontent retorna conteúdo vazio
 	}
 
 	public ResponseEntity<Void> delete(Integer code) {
