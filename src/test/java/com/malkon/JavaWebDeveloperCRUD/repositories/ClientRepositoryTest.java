@@ -33,7 +33,7 @@ public class ClientRepositoryTest {
 		clientRepository.save(client);
 		Integer countClient = clientRepository.findAll().size();
 		assertEquals(1, countClient - 6);
-		Client client1 = clientRepository.findUserByName("Chaves");
+		Client client1 = clientRepository.findClientByName("Chaves");
 		assertNotNull(client1);
 		assertEquals(client, client1);
 	}
@@ -44,7 +44,7 @@ public class ClientRepositoryTest {
 		clientRepository.save(client);
 		Integer countClient = clientRepository.findAll().size();
 		assertEquals(1, countClient - 6);
-		Client client1 = clientRepository.findUserByName("Girafales");
+		Client client1 = clientRepository.findClientByName("Girafales");
 		assertNull(client1);
 	}
 
