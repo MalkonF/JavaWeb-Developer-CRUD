@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 public class ClientTest {
 
 	@Test
-	public void ClientTestAtributes() {
+	public void clientTestAtributes() {
 		Client client = new Client(null, null, "Linus Torvalds");
 		assertEquals("Linus Torvalds", client.getName());
 	}
