@@ -10,4 +10,6 @@ import com.malkon.JavaWebDeveloperCRUD.domain.Product;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, UUID> {
 
+	Product findProductByDescription(String description);
+
 }
