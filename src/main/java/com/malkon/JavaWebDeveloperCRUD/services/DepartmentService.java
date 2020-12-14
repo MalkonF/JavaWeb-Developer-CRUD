@@ -4,6 +4,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.malkon.JavaWebDeveloperCRUD.domain.Department;
@@ -30,6 +31,16 @@ public class DepartmentService {
 		Department newDepartment = find(department.getId());
 		updateData(newDepartment, department);
 		return departmentRepository.save(newDepartment);
+	}
+
+	public void delete(UUID id) {
+		find(id);
+		try {
+			departmentRepository.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DataIntegrityViolationException(
+					"Não é possível excluir um departamento que contém produtos associados", e);
+		}
 	}
 
 	private void updateData(Department newDepartment, Department department) {

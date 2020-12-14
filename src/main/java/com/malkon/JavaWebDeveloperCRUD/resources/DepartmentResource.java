@@ -48,4 +48,10 @@ public class DepartmentResource {
 
 		return null;
 	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> delete(@PathVariable UUID id) {
+		departmentService.delete(id);
+		return ResponseEntity.noContent().build();
+	}
 }

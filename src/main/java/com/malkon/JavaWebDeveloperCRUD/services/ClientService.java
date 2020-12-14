@@ -4,6 +4,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.malkon.JavaWebDeveloperCRUD.domain.Client;
@@ -30,6 +31,15 @@ public class ClientService {
 		Client newClient = find(client.getId());
 		updateData(newClient, client);
 		return clientRepository.save(newClient);
+	}
+
+	public void delete(UUID id) {
+		find(id);
+		try {
+			clientRepository.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new DataIntegrityViolationException("Não foi possível excluir o cliente ", e);
+		}
 	}
 
 	private void updateData(Client newClient, Client client) {

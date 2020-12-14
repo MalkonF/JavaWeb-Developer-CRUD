@@ -3,6 +3,7 @@ package com.malkon.JavaWebDeveloperCRUD.services;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.malkon.JavaWebDeveloperCRUD.domain.Product;
@@ -34,6 +35,15 @@ public class ProductService {
 		Product newProduct = find(product.getId());
 		updateData(newProduct, product);
 		return productRepository.save(newProduct);
+	}
+
+	public void delete(UUID id) {
+		find(id);
+		try {
+			productRepository.deleteById(id);
+		} catch (Exception e) {
+			throw new DataIntegrityViolationException("Não foi possível excluir o produto", e);
+		}
 	}
 
 	private void updateData(Product newProduct, Product product) {

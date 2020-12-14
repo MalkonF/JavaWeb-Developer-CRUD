@@ -43,8 +43,9 @@ public class ProductResource {
 		return ResponseEntity.noContent().build();// nocontent retorna conteúdo vazio
 	}
 
-	public ResponseEntity<Void> delete(String code) {
-
-		return null;
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> delete(@PathVariable UUID id) {
+		productService.delete(id);
+		return ResponseEntity.noContent().build();
 	}
 }

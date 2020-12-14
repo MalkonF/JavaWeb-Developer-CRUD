@@ -44,9 +44,10 @@ public class ClientResource {
 		return ResponseEntity.noContent().build();// nocontent retorna conteúdo vazio
 	}
 
-	public ResponseEntity<Void> delete(UUID code) {
-
-		return null;
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> delete(@PathVariable UUID id) {
+		clientService.delete(id);
+		return ResponseEntity.noContent().build();
 	}
 
 }
