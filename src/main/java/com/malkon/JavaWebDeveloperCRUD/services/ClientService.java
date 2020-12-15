@@ -16,11 +16,15 @@ public class ClientService {
 
 	@Autowired
 	ClientRepository clientRepository;
+	
+	public List<Client> findAll() {
+		List<Client> listClient = clientRepository.findAll();
+		return listClient;
+	}
 
 	public Client find(UUID id) {
 		Optional<Client> client = clientRepository.findById(id);
 		return client.orElseThrow();
-
 	}
 
 	public Client insert(Client client) {
@@ -45,11 +49,6 @@ public class ClientService {
 
 	private void updateData(Client newClient, Client client) {
 		newClient.setName(client.getName());
-	}
-
-	public List<Client> findAll() {
-		List<Client> listClient = clientRepository.findAll();
-		return listClient;
 	}
 
 }

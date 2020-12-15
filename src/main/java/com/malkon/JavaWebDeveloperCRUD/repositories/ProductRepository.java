@@ -1,5 +1,6 @@
 package com.malkon.JavaWebDeveloperCRUD.repositories;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,5 +12,7 @@ import com.malkon.JavaWebDeveloperCRUD.domain.Product;
 public interface ProductRepository extends JpaRepository<Product, UUID> {
 
 	Product findProductByDescription(String description);
+
+	List<Product> findAll();
 
 }

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.malkon.JavaWebDeveloperCRUD.domain.Client;
 import com.malkon.JavaWebDeveloperCRUD.domain.Department;
 import com.malkon.JavaWebDeveloperCRUD.services.DepartmentService;
 
@@ -28,7 +27,6 @@ public class DepartmentResource {
 	public ResponseEntity<List<Department>> findAll() {
 		List<Department> listDepartment = departmentService.findAll();
 		return ResponseEntity.ok().body(listDepartment);
-
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

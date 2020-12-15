@@ -1,6 +1,7 @@
 package com.malkon.JavaWebDeveloperCRUD.resources;
 
 import java.net.URI;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,12 @@ public class ProductResource {
 
 	@Autowired
 	ProductService productService;
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<List<Product>> findAll() {
+		List<Product> listProduct = productService.findAll();
+		return ResponseEntity.ok().body(listProduct);
+	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Product> find(@PathVariable UUID id) {

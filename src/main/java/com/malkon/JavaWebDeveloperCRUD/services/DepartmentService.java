@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import com.malkon.JavaWebDeveloperCRUD.domain.Client;
 import com.malkon.JavaWebDeveloperCRUD.domain.Department;
 import com.malkon.JavaWebDeveloperCRUD.repositories.DepartmentRepository;
 
@@ -18,10 +17,14 @@ public class DepartmentService {
 	@Autowired
 	DepartmentRepository departmentRepository;
 
+	public List<Department> findAll() {
+		List<Department> listDepartment = departmentRepository.findAll();
+		return listDepartment;
+	}
+
 	public Department find(UUID id) {
 		Optional<Department> department = departmentRepository.findById(id);
 		return department.orElseThrow();
-
 	}
 
 	public Department insert(Department department) {
@@ -47,11 +50,6 @@ public class DepartmentService {
 
 	private void updateData(Department newDepartment, Department department) {
 		newDepartment.setName(department.getName());
-	}
-
-	public List<Department> findAll() {
-		List<Department> listDepartment = departmentRepository.findAll();
-		return listDepartment;
 	}
 
 }

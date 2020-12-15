@@ -17,27 +17,31 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.malkon.JavaWebDeveloperCRUD.domain.Department;
+import com.malkon.JavaWebDeveloperCRUD.domain.Product;
 import com.malkon.JavaWebDeveloperCRUD.repositories.DepartmentRepository;
-import com.malkon.JavaWebDeveloperCRUD.services.DepartmentService;
+import com.malkon.JavaWebDeveloperCRUD.repositories.ProductRepository;
+import com.malkon.JavaWebDeveloperCRUD.services.ProductService;
 
-@WebMvcTest(controllers = DepartmentResource.class)
-@ContextConfiguration(classes = DepartmentService.class)
-@Import(DepartmentResource.class)
-public class DepartmentResourceTest {
-	
+@WebMvcTest(controllers = ProductResource.class)
+@ContextConfiguration(classes = ProductService.class)
+@Import(ProductResource.class)
+public class ProductResourceTest {
+
 	@Autowired
 	private MockMvc mockMvc;
+	@MockBean
+	private ProductRepository productRepository;
+
 	@MockBean
 	private DepartmentRepository departmentRepository;
 
 	@Test
-	public void findAllDepartments() throws Exception {
-		Department department = new Department(UUID.randomUUID(), 33, "Vestuario");
-		List<Department> departmentList = List.of(department);
-		when(departmentRepository.findAll()).thenReturn(departmentList);
-		mockMvc.perform(get("/departments")).andExpect(status().isOk())
-				.andExpect(content().string(containsString("Vestuario")));
+	public void findAllProducts() throws Exception {
+		Product product = new Product(UUID.randomUUID(), "33E", "Pilha Alcalina Palito", 19.90, true);
+		List<Product> productList = List.of(product);
+		when(productRepository.findAll()).thenReturn(productList);
+		mockMvc.perform(get("/products")).andExpect(status().isOk())
+				.andExpect(content().string(containsString("Pilha Alcalina Palito")));
 	}
 
 }

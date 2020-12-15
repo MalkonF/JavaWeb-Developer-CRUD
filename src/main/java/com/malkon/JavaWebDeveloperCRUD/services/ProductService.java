@@ -1,5 +1,6 @@
 package com.malkon.JavaWebDeveloperCRUD.services;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,11 @@ public class ProductService {
 
 	@Autowired
 	DepartmentRepository departmentRepository;
+	
+	public List<Product> findAll() {
+		List<Product> listProduct = productRepository.findAll();
+		return listProduct;
+	}
 
 	public Product find(UUID code) {
 		Optional<Product> product = productRepository.findById(code);
@@ -52,5 +58,5 @@ public class ProductService {
 		newProduct.setPrice(product.getPrice());
 		newProduct.setStatus(product.getStatus());
 	}
-
+	
 }

@@ -27,7 +27,6 @@ public class ClientResource {
 	public ResponseEntity<List<Client>> findAll() {
 		List<Client> listClients = clientService.findAll();
 		return ResponseEntity.ok().body(listClients);
-
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
