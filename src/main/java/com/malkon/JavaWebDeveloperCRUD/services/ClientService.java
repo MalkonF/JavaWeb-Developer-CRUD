@@ -1,5 +1,6 @@
 package com.malkon.JavaWebDeveloperCRUD.services;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -17,8 +18,8 @@ public class ClientService {
 	ClientRepository clientRepository;
 
 	public Client find(UUID id) {
-		Optional<Client> obj = clientRepository.findById(id);
-		return obj.orElseThrow();
+		Optional<Client> client = clientRepository.findById(id);
+		return client.orElseThrow();
 
 	}
 
@@ -44,6 +45,11 @@ public class ClientService {
 
 	private void updateData(Client newClient, Client client) {
 		newClient.setName(client.getName());
+	}
+
+	public List<Client> findAll() {
+		List<Client> listClient = clientRepository.findAll();
+		return listClient;
 	}
 
 }

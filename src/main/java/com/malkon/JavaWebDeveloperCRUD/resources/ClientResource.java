@@ -1,6 +1,7 @@
 package com.malkon.JavaWebDeveloperCRUD.resources;
 
 import java.net.URI;
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +23,17 @@ public class ClientResource {
 	@Autowired
 	ClientService clientService;
 
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<List<Client>> findAll() {
+		List<Client> listClients = clientService.findAll();
+		return ResponseEntity.ok().body(listClients);
+
+	}
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Client> find(@PathVariable UUID id) {
-		Client obj = clientService.find(id);
-		return ResponseEntity.ok().body(obj);
+		Client client = clientService.find(id);
+		return ResponseEntity.ok().body(client);
 
 	}
 

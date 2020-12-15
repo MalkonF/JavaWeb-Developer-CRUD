@@ -24,8 +24,8 @@ public class ProductResource {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Product> find(@PathVariable UUID id) {
-		Product obj = productService.find(id);
-		return ResponseEntity.ok().body(obj);
+		Product product = productService.find(id);
+		return ResponseEntity.ok().body(product);
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
@@ -40,7 +40,7 @@ public class ProductResource {
 	public ResponseEntity<Void> update(@RequestBody Product product, @PathVariable UUID id) {
 		product.setId(id);
 		product = productService.update(product);
-		return ResponseEntity.noContent().build();// nocontent retorna conteúdo vazio
+		return ResponseEntity.noContent().build();
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
@@ -48,4 +48,5 @@ public class ProductResource {
 		productService.delete(id);
 		return ResponseEntity.noContent().build();
 	}
+
 }

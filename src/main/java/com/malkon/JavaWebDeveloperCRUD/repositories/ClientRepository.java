@@ -1,5 +1,6 @@
 package com.malkon.JavaWebDeveloperCRUD.repositories;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,4 +13,5 @@ public interface ClientRepository extends JpaRepository<Client, UUID> {
 
 	Client findClientByName(String name);
 
+	List<Client> findAll();
 }

@@ -20,8 +20,8 @@ public class ProductService {
 	DepartmentRepository departmentRepository;
 
 	public Product find(UUID code) {
-		Optional<Product> obj = productRepository.findById(code);
-		return obj.orElseThrow();
+		Optional<Product> product = productRepository.findById(code);
+		return product.orElseThrow();
 	}
 
 	public Product insert(Product product) {

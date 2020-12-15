@@ -24,8 +24,8 @@ public class DepartmentResource {
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Department> find(@PathVariable UUID id) {
-		Department obj = departmentService.find(id);
-		return ResponseEntity.ok().body(obj);
+		Department department = departmentService.find(id);
+		return ResponseEntity.ok().body(department);
 
 	}
 
@@ -41,12 +41,7 @@ public class DepartmentResource {
 	public ResponseEntity<Void> update(@RequestBody Department department, @PathVariable UUID id) {
 		department.setId(id);
 		department = departmentService.update(department);
-		return ResponseEntity.noContent().build();// nocontent retorna conteúdo vazio
-	}
-
-	public ResponseEntity<Void> delete(Integer code) {
-
-		return null;
+		return ResponseEntity.noContent().build();
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
@@ -54,4 +49,5 @@ public class DepartmentResource {
 		departmentService.delete(id);
 		return ResponseEntity.noContent().build();
 	}
+	
 }

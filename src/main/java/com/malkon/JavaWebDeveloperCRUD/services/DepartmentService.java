@@ -17,8 +17,8 @@ public class DepartmentService {
 	DepartmentRepository departmentRepository;
 
 	public Department find(UUID id) {
-		Optional<Department> obj = departmentRepository.findById(id);
-		return obj.orElseThrow();
+		Optional<Department> department = departmentRepository.findById(id);
+		return department.orElseThrow();
 
 	}
 
