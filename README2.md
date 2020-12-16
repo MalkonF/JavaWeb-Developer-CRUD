@@ -31,12 +31,23 @@ Tenha instalado o [JDK](https://www.oracle.com/br/java/technologies/javase/javas
 * Normalmente, o STS baixa as dependências automaticamente ao abrir o projeto, mas se isso não acontecer, clique com botão direito sobre o projeto, vá na opção _Maven_ e depois em _Update Project_.
 * Para executar clique com botão direito sobre o projeto e escolha _Run as - Spring Boot App_ . A partir daí os endpoints já estarão disponíveis.
 
-### Outros S.O
+### Iniciar backend sem abrir IDE
+
+** Linux **
+
 ```
  git clone https://github.com/MalkonF/JavaWeb-Developer-CRUD.git
  cd JavaWeb-Developer-CRUD/
  ./mvnw spring-boot:run
  ```
+ 
+ ** Windows **
+ 
+ git clone https://github.com/MalkonF/JavaWeb-Developer-CRUD.git
+ cd JavaWeb-Developer-CRUD/
+ ./mvnw.cmd spring-boot:run
+ 
+ 
 
 
 
