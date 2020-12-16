@@ -31,7 +31,7 @@ Tenha instalado o [JDK](https://www.oracle.com/br/java/technologies/javase/javas
 * Normalmente, o STS baixa as dependências automaticamente ao abrir o projeto, mas se isso não acontecer, clique com botão direito sobre o projeto, vá na opção _Maven_ e depois em _Update Project_.
 * Para executar clique com botão direito sobre o projeto e escolha _Run as - Spring Boot App_ . A partir daí os endpoints já estarão disponíveis.
 
-[java]: https://img.shields.io/badge/Java-Java%201.8-green
+[java]: https://img.shields.io/badge/Java-11-brightgreen
 [spring]: https://img.shields.io/badge/spring--boot-2.1.13-green
 [maven]: https://img.shields.io/badge/Ger%20Depend%C3%AAnca-Maven-red
 [mysql]: https://img.shields.io/badge/DB-MySql-orange
