@@ -6,6 +6,7 @@ import { ProductsComponent } from './products/products.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductNewComponent } from './product-new/product-new.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -13,12 +14,10 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
     ProductsComponent,
     ProductDetailsComponent,
     ProductNewComponent,
-    ProductEditComponent
+    ProductEditComponent,
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
