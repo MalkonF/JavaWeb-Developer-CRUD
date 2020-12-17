@@ -12,6 +12,8 @@ import javax.persistence.ManyToMany;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Department implements Serializable {
 
@@ -23,6 +25,7 @@ public class Department implements Serializable {
 	private UUID id;
 	private Integer code;
 	private String name;
+	@JsonIgnore
 	@ManyToMany(mappedBy = "departments")
 	private List<Product> products = new ArrayList<>();
 
