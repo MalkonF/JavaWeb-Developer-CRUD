@@ -1,11 +1,14 @@
-<div>
+<app-menu></app-menu>
+<div class="container">
+ 
   <h3>Adicionar Novo Produto</h3>
-</div>
+
 <form
   class="example-container"
   [formGroup]="productForm"
   (ngSubmit)="addProduto(productForm.value)"
 >
+
   <mat-form-field>
     <input matInput name="code" placeholder="code" formControlName="code" />
   </mat-form-field>
@@ -50,4 +53,7 @@
   >
     Adicionar
   </button>
+
 </form>
+</div>
+

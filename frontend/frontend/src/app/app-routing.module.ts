@@ -4,8 +4,20 @@ import { ProductsComponent } from './products/products.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductNewComponent } from './product-new/product-new.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
+import { LoginComponent } from './login/login.component';
+import { MenuComponent } from './menu/menu.component';
 
 const routes: Routes = [
+  {
+    path: 'login',
+    component: LoginComponent,
+    data: { title: 'Login' },
+  },
+  {
+    path: 'menu',
+    component: MenuComponent,
+    data: { title: 'Menu' },
+  },
   {
     path: 'products',
     component: ProductsComponent,
@@ -26,7 +38,7 @@ const routes: Routes = [
     component: ProductEditComponent,
     data: { title: 'Editar o Produto' },
   },
-  { path: '', redirectTo: '/produtos', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({

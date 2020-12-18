@@ -33,7 +33,7 @@ public class DepartmentRepositoryTest {
 		departmentRepository.save(department);
 		Integer countDepartment = departmentRepository.findAll().size();
 		assertEquals(1, countDepartment - 9);
-		Department department1 = departmentRepository.findDepartmentByName("Cama mesa e banho");
+		Department department1 = departmentRepository.findByName("Cama mesa e banho");
 		assertNotNull(department1);
 		assertEquals(department, department1);
 	}
@@ -44,7 +44,7 @@ public class DepartmentRepositoryTest {
 		departmentRepository.save(department);
 		Integer countDepartment = departmentRepository.findAll().size();
 		assertEquals(1, countDepartment - 9);
-		Department department1 = departmentRepository.findDepartmentByName("Frutas");
+		Department department1 = departmentRepository.findByName("Frutas");
 		assertNull(department1);
 	}
 

@@ -16,6 +16,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 @Entity
 public class Product implements Serializable {
@@ -75,7 +76,7 @@ public class Product implements Serializable {
 	public List<Department> getDepartments() {
 		return departments;
 	}
-
+	@JsonSetter("departments")
 	public void setDepartments(List<Department> departments) {
 		this.departments = departments;
 	}

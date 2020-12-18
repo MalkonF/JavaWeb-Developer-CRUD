@@ -10,7 +10,7 @@ import com.malkon.JavaWebDeveloperCRUD.domain.Department;
 @Repository
 public interface DepartmentRepository extends JpaRepository<Department, UUID> {
 
-	Department findDepartmentByName(String name);
+	Department findByName(String name);
 	
 	List<Department> findAll();
 

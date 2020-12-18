@@ -1,13 +1,17 @@
 package com.malkon.JavaWebDeveloperCRUD.services;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import com.malkon.JavaWebDeveloperCRUD.domain.Department;
 import com.malkon.JavaWebDeveloperCRUD.domain.Product;
+import com.malkon.JavaWebDeveloperCRUD.domain.dto.ProductDto;
 import com.malkon.JavaWebDeveloperCRUD.repositories.DepartmentRepository;
 import com.malkon.JavaWebDeveloperCRUD.repositories.ProductRepository;
 
@@ -19,7 +23,7 @@ public class ProductService {
 
 	@Autowired
 	DepartmentRepository departmentRepository;
-	
+
 	public List<Product> findAll() {
 		List<Product> listProduct = productRepository.findAll();
 		return listProduct;
@@ -30,10 +34,15 @@ public class ProductService {
 		return product.orElseThrow();
 	}
 
-	public Product insert(Product product) {
-		product.setId(null);
+	public Product insert(ProductDto productDto) {
+		// product.setId(null);
 		// debug purpose System.out.println(product.getDepartments());
-		departmentRepository.saveAll(product.getDepartments());
+		Product product = new Product(null, productDto.getCode(), productDto.getDescription(), productDto.getPrice(),
+				productDto.getStatus());
+		Department department = departmentRepository.findByName(productDto.getDepartment());
+		System.out.println("oi"+productDto.getDepartment());
+		product.getDepartments().addAll(Arrays.asList(department));
+		 departmentRepository.saveAll(product.getDepartments());
 		return productRepository.save(product);
 	}
 
@@ -58,5 +67,5 @@ public class ProductService {
 		newProduct.setPrice(product.getPrice());
 		newProduct.setStatus(product.getStatus());
 	}
-	
+
 }

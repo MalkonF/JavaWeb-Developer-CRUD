@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.malkon.JavaWebDeveloperCRUD.domain.Product;
+import com.malkon.JavaWebDeveloperCRUD.domain.dto.ProductDto;
 import com.malkon.JavaWebDeveloperCRUD.services.ProductService;
 
 @RestController
@@ -37,9 +38,10 @@ public class ProductResource {
 		return ResponseEntity.ok().body(product);
 	}
 
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Product product) {
-		product = productService.insert(product);
+	public ResponseEntity<Void> insert(@RequestBody ProductDto productDto) {
+		Product product = productService.insert(productDto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(product.getId())
 				.toUri();
 		return ResponseEntity.created(uri).build();
