@@ -1,6 +1,8 @@
 # Prova para fullstack na Maxima Tech
 
-## Tecnologias usadas no Projeto
+## Backend
+
+### Tecnologias usadas no Projeto
 
 ![java]
 ![spring]
@@ -8,22 +10,22 @@
 ![mysql]
 ![spring-data-jpa]
 
-## Antes de utilizar
+### Antes de utilizar
 
 Tenha instalado o [JDK](https://www.oracle.com/br/java/technologies/javase/javase-jdk8-downloads.html) e as variáveis _JAVA_HOME_, _CLASSPATH_ e _PATH_ configuradas.
 
-### Windows
+#### Windows
 
-## Instalação Mysql
+### Instalação Mysql
 
-* Baixe o WAMPServer64, instale e inicie ele
+* Baixe o [WAMPServer64](https://sourceforge.net/projects/wampserver/files/latest/download), instale e inicie ele
 * Abra o navegador e acesse http://localhost/phpmyadmin/
 * Entre no phpMyadmin com usuário root e senha em branco
 * Crie uma base de dados chamada maximatech
 
-## Para iniciar o backend siga esses passos:
+### Para iniciar o backend siga esses passos:
 
-### Windows
+#### Windows
 
 * git clone https://github.com/MalkonF/JavaWeb-Developer-CRUD.git
 * Baixe e instale o Spring Tool Suite
@@ -31,7 +33,7 @@ Tenha instalado o [JDK](https://www.oracle.com/br/java/technologies/javase/javas
 * Normalmente, o STS baixa as dependências automaticamente ao abrir o projeto, mas se isso não acontecer, clique com botão direito sobre o projeto, vá na opção _Maven_ e depois em _Update Project_.
 * Para executar clique com botão direito sobre o projeto e escolha _Run as - Spring Boot App_ . A partir daí os endpoints já estarão disponíveis.
 
-### Iniciar backend sem abrir IDE
+#### Iniciar backend sem abrir IDE
 
 ** Linux **
 
@@ -43,12 +45,19 @@ Tenha instalado o [JDK](https://www.oracle.com/br/java/technologies/javase/javas
  
  ** Windows **
  
+ ```
  git clone https://github.com/MalkonF/JavaWeb-Developer-CRUD.git
  cd JavaWeb-Developer-CRUD/
  ./mvnw.cmd spring-boot:run
+ ```
  
- 
+## Frontend
 
+```
+ cd JavaWeb-Developer-CRUD/frontend/frontend
+ ng serve
+ Acesse pelo endereço: localhost:4200
+```
 
 
 
