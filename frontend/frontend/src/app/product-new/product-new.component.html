@@ -1,59 +1,55 @@
 <app-menu></app-menu>
 <div class="container">
- 
   <h3>Adicionar Novo Produto</h3>
 
-<form
-  class="example-container"
-  [formGroup]="productForm"
-  (ngSubmit)="addProduto(productForm.value)"
->
-
-  <mat-form-field>
-    <input matInput name="code" placeholder="code" formControlName="code" />
-  </mat-form-field>
-  <mat-form-field>
-    <textarea
-      matInput
-      name="description"
-      placeholder="Descrição do Produto"
-      formControlName="description"
-    ></textarea>
-  </mat-form-field>
-  <mat-form-field>
-    <input
-      matInput
-      name="departments"
-      placeholder="Departamentos"
-      formControlName="department"
-    />
-  </mat-form-field>
-  <mat-form-field>
-    <input
-      matInput
-      name="price"
-      placeholder="Preço do Produto"
-      formControlName="price"
-    />
-  </mat-form-field>
-  <mat-form-field>
-    <input
-      matInput
-      name="status"
-      placeholder="Status"
-      formControlName="status"
-    />
-  </mat-form-field>
-
-  <button
-    type="submit"
-    [disabled]="!productForm.valid"
-    mat-button
-    color="primary"
+  <form
+    class="example-container"
+    [formGroup]="productForm"
+    (ngSubmit)="addProduto(productForm.value)"
   >
-    Adicionar
-  </button>
+    <mat-form-field>
+      <input matInput name="code" placeholder="code" formControlName="code" />
+    </mat-form-field>
+    <mat-form-field>
+      <textarea
+        matInput
+        name="description"
+        placeholder="Descrição do Produto"
+        formControlName="description"
+      ></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        name="departments"
+        placeholder="Departamentos"
+        formControlName="department"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        name="price"
+        placeholder="Preço do Produto"
+        formControlName="price"
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        name="status"
+        placeholder="Status"
+        formControlName="status"
+      />
+    </mat-form-field>
 
-</form>
+    <button
+      type="submit"
+      [disabled]="!productForm.valid"
+      mat-button
+      color="primary"
+    >
+      Adicionar
+    </button>
+  </form>
 </div>
-

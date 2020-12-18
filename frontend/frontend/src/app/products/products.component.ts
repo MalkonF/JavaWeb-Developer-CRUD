@@ -30,7 +30,7 @@ export class ProductsComponent implements OnInit {
       },
       (err) => {
         console.log(err);
-         this.isLoadingResults = false;
+        this.isLoadingResults = false;
       }
     );
   }
