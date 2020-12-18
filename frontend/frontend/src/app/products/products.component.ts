@@ -18,7 +18,7 @@ export class ProductsComponent implements OnInit {
     'status',
   ];
   dataSource: Product[];
-
+  isLoadingResults = false;
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {
@@ -26,11 +26,11 @@ export class ProductsComponent implements OnInit {
       (res) => {
         this.dataSource = res;
         console.log(this.dataSource);
-        //this.isLoadingResults = false;
+        this.isLoadingResults = false;
       },
       (err) => {
         console.log(err);
-        // this.isLoadingResults = false;
+         this.isLoadingResults = false;
       }
     );
   }

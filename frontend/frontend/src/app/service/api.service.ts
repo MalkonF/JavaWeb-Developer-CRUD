@@ -26,19 +26,19 @@ export class ApiService {
     );
   }
 
-  getProduct(id: number): Observable<Product> {
+  /*getProduct(id: number): Observable<Product> {
     const url = `${apiUrl}/${id}`;
     return this.http.get<Product>(url).pipe(
       tap((_) => console.log(`leu o produto id=${id}`)),
       catchError(this.handleError<Product>(`getProduto id=${id}`))
     );
-  }
+  }*/
 
   addProduct(product): Observable<Product> {
     return this.http.post<Product>(apiUrl, product, httpOptions).pipe(
       // tslint:disable-next-line:no-shadowed-variable
       tap((product: Product) =>
-        console.log(`adicionou o produto com w/ id=${product.id}`)
+        console.log(`adicionou o produto com w/ id=${product.code}`)
       ),
       catchError(this.handleError<Product>('addProduto'))
     );

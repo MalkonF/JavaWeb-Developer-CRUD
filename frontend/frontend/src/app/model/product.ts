@@ -1,8 +1,7 @@
 export class Product {
-  id: string;
   code: string;
   description: string;
-  departments: object;
+  department: string;
   price: number;
   status: boolean;
 }

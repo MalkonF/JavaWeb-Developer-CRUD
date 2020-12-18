@@ -17,7 +17,7 @@ const routes: Routes = [
     data: { title: 'Detalhe do Produto' },
   },
   {
-    path: 'product-new',
+    path: 'products-new',
     component: ProductNewComponent,
     data: { title: 'Adicionar Produto' },
   },
