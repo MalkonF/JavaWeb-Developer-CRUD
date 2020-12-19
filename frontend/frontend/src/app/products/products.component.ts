@@ -13,7 +13,7 @@ export class ProductsComponent implements OnInit {
     'id',
     'code',
     'description',
-    'departments',
+    'department',
     'price',
     'status',
   ];

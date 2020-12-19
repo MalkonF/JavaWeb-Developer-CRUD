@@ -1,5 +1,6 @@
 package com.malkon.JavaWebDeveloperCRUD.services;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -24,9 +25,26 @@ public class ProductService {
 	@Autowired
 	DepartmentRepository departmentRepository;
 
-	public List<Product> findAll() {
+	
+	private String b;
+	public List<ProductDto> findAll() {
+		List<ProductDto> productDtoList = new ArrayList<>();
 		List<Product> listProduct = productRepository.findAll();
-		return listProduct;
+		for (Product product : listProduct) {
+			// System.out.println("debug:"+product.getDepartments().toString());
+			List<Department> productDepartment = product.getDepartments();
+			
+			for (Department department : productDepartment) 
+				b = department.getName();
+
+			ProductDto productDto = new ProductDto(product.getCode(), product.getDescription(), b,
+					product.getPrice(), product.getStatus());
+			System.out.println(productDto.getDepartment());
+			productDtoList.add(productDto);
+			//productDto.clear();
+	
+		}
+		return productDtoList;
 	}
 
 	public Product find(UUID code) {
@@ -40,9 +58,9 @@ public class ProductService {
 		Product product = new Product(null, productDto.getCode(), productDto.getDescription(), productDto.getPrice(),
 				productDto.getStatus());
 		Department department = departmentRepository.findByName(productDto.getDepartment());
-		System.out.println("oi"+productDto.getDepartment());
+		// System.out.println("debug"+productDto.getDepartment());
 		product.getDepartments().addAll(Arrays.asList(department));
-		 departmentRepository.saveAll(product.getDepartments());
+		departmentRepository.saveAll(product.getDepartments());
 		return productRepository.save(product);
 	}
 

@@ -27,9 +27,9 @@ public class ProductResource {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Product>> findAll() {
-		List<Product> listProduct = productService.findAll();
-		return ResponseEntity.ok().body(listProduct);
+	public ResponseEntity<List<ProductDto>> findAll() {
+		List<ProductDto> listProductDto = productService.findAll();
+		return ResponseEntity.ok().body(listProductDto);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)

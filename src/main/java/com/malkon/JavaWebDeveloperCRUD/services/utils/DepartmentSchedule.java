@@ -17,7 +17,7 @@ public class DepartmentSchedule {
 	private final long SECONDS = 15;
 	
 	@Scheduled(fixedDelay = SECONDS) 
-    public void verifyDepartmentPerHour() { 
+    public void verifyDepartmentPerSeconds() { 
         RestTemplate restTemplate = new RestTemplate();
         Department department = restTemplate.getForObject("https://private-anon-0b6825f1d3-maximatech.apiary-mock.com/fullstack/departamento", Department.class);
         departmentService.update(department);
