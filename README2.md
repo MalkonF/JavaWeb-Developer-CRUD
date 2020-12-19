@@ -9,6 +9,7 @@
 ![maven]
 ![mysql]
 ![spring-data-jpa]
+![angular]
 
 ### Antes de utilizar
 
@@ -54,6 +55,40 @@ Tenha instalado o [JDK](https://www.oracle.com/br/java/technologies/javase/javas
 ## Frontend
 
 ```
+$ ng --version
+
+Angular CLI: 11.0.4
+Node: 12.19.0
+OS: win32 x64
+
+Angular:
+...
+Ivy Workspace:
+
+Package                      Version
+------------------------------------------------------
+@angular-devkit/architect    0.1100.4 (cli-only)
+@angular-devkit/core         11.0.4
+@angular-devkit/schematics   11.0.4
+@schematics/angular          11.0.4 (cli-only)
+@schematics/update           0.1100.4 (cli-only)
+```
+
+### Antes de utilizar
+
+Baixe e instale o [Node.js](https://nodejs.org/en/download/)
+Instale o Angular CLI. Abra o cmd ou git bash e entre com:
+
+```
+npm install -g @angular/cli
+
+```
+
+### Executando o frontend
+
+Para iniciar entre com:
+
+```
  cd JavaWeb-Developer-CRUD/frontend/frontend
  ng serve
  Acesse pelo endereço: localhost:4200
@@ -66,3 +101,4 @@ Tenha instalado o [JDK](https://www.oracle.com/br/java/technologies/javase/javas
 [maven]: https://img.shields.io/badge/Ger%20Depend%C3%AAnca-Maven-red
 [mysql]: https://img.shields.io/badge/DB-MySql-orange
 [spring-data-jpa]: https://img.shields.io/badge/Spring--Data--JPA-2.4.2-brightgreen
+[angular]: https://img.shields.io/badge/Angular-11.0.4-red
