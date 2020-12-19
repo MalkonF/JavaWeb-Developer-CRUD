@@ -25,24 +25,19 @@ public class ProductService {
 	@Autowired
 	DepartmentRepository departmentRepository;
 
-	
-	private String b;
+	private String departmentName;
+
 	public List<ProductDto> findAll() {
 		List<ProductDto> productDtoList = new ArrayList<>();
 		List<Product> listProduct = productRepository.findAll();
 		for (Product product : listProduct) {
 			// System.out.println("debug:"+product.getDepartments().toString());
 			List<Department> productDepartment = product.getDepartments();
-			
-			for (Department department : productDepartment) 
-				b = department.getName();
-
-			ProductDto productDto = new ProductDto(product.getCode(), product.getDescription(), b,
+			for (Department department : productDepartment)
+				departmentName = department.getName();
+			ProductDto productDto = new ProductDto(product.getCode(), product.getDescription(), departmentName,
 					product.getPrice(), product.getStatus());
-			System.out.println(productDto.getDepartment());
 			productDtoList.add(productDto);
-			//productDto.clear();
-	
 		}
 		return productDtoList;
 	}
@@ -53,13 +48,14 @@ public class ProductService {
 	}
 
 	public Product insert(ProductDto productDto) {
-		// product.setId(null);
-		// debug purpose System.out.println(product.getDepartments());
 		Product product = new Product(null, productDto.getCode(), productDto.getDescription(), productDto.getPrice(),
 				productDto.getStatus());
+		try {
 		Department department = departmentRepository.findByName(productDto.getDepartment());
-		// System.out.println("debug"+productDto.getDepartment());
 		product.getDepartments().addAll(Arrays.asList(department));
+		}catch(IllegalArgumentException e) {
+			throw new IllegalArgumentException("Não foi possível inserir o produto porque não existe esta categoria.");
+		}
 		departmentRepository.saveAll(product.getDepartments());
 		return productRepository.save(product);
 	}
