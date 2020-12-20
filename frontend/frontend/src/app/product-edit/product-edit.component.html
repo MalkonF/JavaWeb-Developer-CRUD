@@ -1,1 +1,44 @@
-<p>product-edit works!</p>
+<div class="container">
+<div>
+  <h3>Editar Produto</h3>
+</div>
+<form
+  class="example-container"
+  [formGroup]="productForm"
+  (ngSubmit)="updateProduct(productForm.value)"
+>
+  <mat-form-field>
+    <input
+      matInput
+      name="code"
+      placeholder="Código do produto"
+      formControlName="code"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <textarea
+      matInput
+      name="description"
+      placeholder="Descrição do Produto"
+      formControlName="description"
+    ></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      name="price"
+      placeholder="Preço do Produto"
+      formControlName="price"
+    />
+  </mat-form-field>
+
+  <button
+    type="submit"
+    [disabled]="!productForm.valid"
+    mat-button
+    color="primary"
+  >
+    Editar
+  </button>
+</form>
+</div>

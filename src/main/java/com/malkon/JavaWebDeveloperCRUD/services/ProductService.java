@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -42,8 +40,8 @@ public class ProductService {
 		return productDtoList;
 	}
 
-	public Product find(UUID code) {
-		Optional<Product> product = productRepository.findById(code);
+	public Product find(String code) {
+		Optional<Product> product = productRepository.findByCode(code);
 		return product.orElseThrow();
 	}
 
@@ -60,26 +58,28 @@ public class ProductService {
 		return productRepository.save(product);
 	}
 
-	public Product update(Product product) {
-		Product newProduct = find(product.getId());
-		updateData(newProduct, product);
+	public Product update(ProductDto productDto, String code) {
+		Product newProduct = find(code);
+		updateData(newProduct, productDto);
 		return productRepository.save(newProduct);
 	}
 
-	public void delete(UUID id) {
-		find(id);
+	public void delete(String code) {
+		find(code);
 		try {
-			productRepository.deleteById(id);
+			productRepository.deleteByCode(code);
 		} catch (Exception e) {
 			throw new DataIntegrityViolationException("Não foi possível excluir o produto", e);
 		}
 	}
 
-	private void updateData(Product newProduct, Product product) {
-		newProduct.setCode(product.getCode());
-		newProduct.setDescription(product.getDescription());
-		newProduct.setPrice(product.getPrice());
-		newProduct.setStatus(product.getStatus());
+	private void updateData(Product newProduct, ProductDto productDto) {
+		newProduct.setCode(productDto.getCode());
+		newProduct.setDescription(productDto.getDescription());
+		Department department = departmentRepository.findByName(productDto.getDepartment());
+		newProduct.getDepartments().addAll(Arrays.asList(department));
+		newProduct.setPrice(productDto.getPrice());
+		newProduct.setStatus(productDto.getStatus());
 	}
 
 }

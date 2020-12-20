@@ -2,8 +2,6 @@ package com.malkon.JavaWebDeveloperCRUD.resources;
 
 import java.net.URI;
 import java.util.List;
-import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,32 +29,33 @@ public class ProductResource {
 		List<ProductDto> listProductDto = productService.findAll();
 		return ResponseEntity.ok().body(listProductDto);
 	}
-
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Product> find(@PathVariable UUID id) {
-		Product product = productService.find(id);
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RequestMapping(value = "/{code}", method = RequestMethod.GET)
+	public ResponseEntity<Product> find(@PathVariable String code) {
+		Product product = productService.find(code);
 		return ResponseEntity.ok().body(product);
 	}
 
 	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody ProductDto productDto) {
+	public ResponseEntity<Product> insert(@RequestBody ProductDto productDto) {
 		Product product = productService.insert(productDto);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(product.getId())
-				.toUri();
-		return ResponseEntity.created(uri).build();
+		//URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{code}").buildAndExpand(product.getCode())
+				//.toUri();
+		return ResponseEntity.ok().body(product);
 	}
-
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Product product, @PathVariable UUID id) {
-		product.setId(id);
-		product = productService.update(product);
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RequestMapping(value = "/{code}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody ProductDto productDto, @PathVariable String code) {
+		//productDto.setCode(code);
+		Product product = productService.update(productDto, code);
 		return ResponseEntity.noContent().build();
 	}
-
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> delete(@PathVariable UUID id) {
-		productService.delete(id);
+	@CrossOrigin(origins = "http://localhost:4200")
+	@RequestMapping(value = "/{code}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> delete(@PathVariable String code) {
+		productService.delete(code);
 		return ResponseEntity.noContent().build();
 	}
 

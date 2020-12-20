@@ -10,12 +10,12 @@ import { ApiService } from '../service/api.service';
 })
 export class ProductsComponent implements OnInit {
   displayedColumns: string[] = [
-    'id',
     'code',
     'description',
     'department',
     'price',
     'status',
+    'acao'
   ];
   dataSource: Product[];
   isLoadingResults = false;

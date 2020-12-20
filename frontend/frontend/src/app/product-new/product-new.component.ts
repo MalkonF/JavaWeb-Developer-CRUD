@@ -19,20 +19,22 @@ export class ProductNewComponent implements OnInit {
 
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
-      code: [null, Validators.required],
-      description: [null, [Validators.required, Validators.minLength(4)]],
-      department: [null, [Validators.required]],
-      price: [null, Validators.required],
-      status: [null, Validators.required],
+      'code': [null, Validators.required],
+      'description': [null, [Validators.required, Validators.minLength(4)]],
+      'department': [null, [Validators.required]],
+     'price': [null, Validators.required],
+      'status': [null, Validators.required]
     });
   }
-  addProduto(form: NgForm) {
+  addProduct(form: NgForm) {
     this.isLoadingResults = true;
     this.api.addProduct(form).subscribe(
       (res) => {
-        //const id = res['_id'];
+        const code = res['code'];
         this.isLoadingResults = false;
-        this.router.navigate(['/products']);
+        console.log("debug" + code);
+        this.router.navigate(['/product-details', code]);
+
       },
       (err) => {
         console.log(err);
