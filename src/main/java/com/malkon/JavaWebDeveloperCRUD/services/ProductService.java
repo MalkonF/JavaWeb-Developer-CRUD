@@ -35,10 +35,11 @@ public class ProductService {
 			List<Department> productDepartment = product.getDepartments();
 			for (Department department : productDepartment)
 				departmentName = department.getName();
-			ProductDto productDto = new ProductDto(product.getId(), product.getCode(), product.getDescription(), departmentName,
-					product.getPrice(), product.getStatus());
+			ProductDto productDto = new ProductDto(product.getId(), product.getCode(), product.getDescription(),
+					departmentName, product.getPrice(), product.getStatus());
 			productDtoList.add(productDto);
 		}
+
 		return productDtoList;
 	}
 
@@ -51,9 +52,9 @@ public class ProductService {
 		Product product = new Product(null, productDto.getCode(), productDto.getDescription(), productDto.getPrice(),
 				productDto.getStatus());
 		try {
-		Department department = departmentRepository.findByName(productDto.getDepartment());
-		product.getDepartments().addAll(Arrays.asList(department));
-		}catch(IllegalArgumentException e) {
+			Department department = departmentRepository.findByName(productDto.getDepartment());
+			product.getDepartments().addAll(Arrays.asList(department));
+		} catch (IllegalArgumentException e) {
 			throw new IllegalArgumentException("Não foi possível inserir o produto porque não existe esta categoria.");
 		}
 		departmentRepository.saveAll(product.getDepartments());
@@ -69,7 +70,7 @@ public class ProductService {
 	public void delete(UUID id) {
 		find(id);
 		try {
-			productRepository.deleteByCode(id);
+			productRepository.deleteById(id);
 		} catch (Exception e) {
 			throw new DataIntegrityViolationException("Não foi possível excluir o produto", e);
 		}

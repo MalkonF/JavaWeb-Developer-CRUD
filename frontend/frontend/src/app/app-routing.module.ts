@@ -39,7 +39,7 @@ const routes: Routes = [
     data: { title: 'Editar o Produto' },
 
   },
-  //{ path: '', redirectTo: '/login', pathMatch: 'full' },
+ // { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: '', redirectTo: 'products', pathMatch: 'full' },
 ];
 

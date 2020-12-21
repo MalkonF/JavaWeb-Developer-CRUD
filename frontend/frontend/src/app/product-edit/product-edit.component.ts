@@ -15,7 +15,7 @@ export class ProductEditComponent implements OnInit {
   description: String = '';
   department: String;
   price: number = null;
-  status: Boolean;
+
   isLoadingResults = false;
   constructor(
     private router: Router,
@@ -27,10 +27,10 @@ export class ProductEditComponent implements OnInit {
   ngOnInit(): void {
     this.getProduct(this.route.snapshot.params['id']);
     this.productForm = this.formBuilder.group({
-      'id':'',
-      'code': [null, Validators.required],
-      'description': [null, Validators.required],
-      'price': [null, Validators.required],
+      id: '',
+      code: [null, Validators.required],
+      description: [null, Validators.required],
+      price: [null, Validators.required],
     });
   }
 
@@ -41,6 +41,7 @@ export class ProductEditComponent implements OnInit {
         id: data.id,
         code: data.code,
         description: data.description,
+
         price: data.price,
       });
     });

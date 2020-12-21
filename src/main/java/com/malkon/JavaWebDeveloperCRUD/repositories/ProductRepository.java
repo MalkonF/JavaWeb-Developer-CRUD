@@ -19,6 +19,7 @@ public interface ProductRepository extends JpaRepository<Product, UUID> {
 
 	Optional<Product> findById(UUID id);
 	
+	
 	@Transactional
 	void deleteByCode(UUID id);
 

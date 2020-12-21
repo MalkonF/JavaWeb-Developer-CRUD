@@ -12,6 +12,6 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router) {}
 
   public login(): void {
-    //this.router.navigate(['/menu']);
+    this.router.navigate(['/menu']);
   }
 }

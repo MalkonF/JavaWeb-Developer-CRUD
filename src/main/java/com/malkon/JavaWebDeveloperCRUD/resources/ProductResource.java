@@ -53,7 +53,7 @@ public class ProductResource {
 		return ResponseEntity.noContent().build();
 	}
 	@CrossOrigin(origins = "http://localhost:4200")
-	@RequestMapping(value = "/{code}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable UUID id) {
 		productService.delete(id);
 		return ResponseEntity.noContent().build();
