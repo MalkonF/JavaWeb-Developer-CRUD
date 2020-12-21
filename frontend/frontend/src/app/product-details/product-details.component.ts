@@ -10,6 +10,7 @@ import { ApiService } from '../service/api.service';
 })
 export class ProductDetailsComponent implements OnInit {
   product: Product = {
+    id: '',
     code: '',
     description: '',
     department: '',
@@ -24,20 +25,22 @@ export class ProductDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.getProduct(this.route.snapshot.params['code']);
+    this.getProduct(this.route.snapshot.params['id']);
+    console.log();
   }
 
-  getProduct(code) {
-    this.api.getProduct(code).subscribe((data) => {
+  getProduct(id) {
+    this.api.getProduct(id).subscribe((data) => {
+      console.log(id);
       this.product = data;
       console.log(this.product);
       this.isLoadingResults = false;
     });
   }
 
-  deleteProduct(code) {
+  deleteProduct(id) {
     this.isLoadingResults = true;
-    this.api.deleteProduct(code).subscribe(
+    this.api.deleteProduct(id).subscribe(
       (res) => {
         this.isLoadingResults = false;
         this.router.navigate(['/products']);

@@ -24,7 +24,7 @@ const routes: Routes = [
     data: { title: 'Lista de Produtos' },
   },
   {
-    path: 'product-details/:code',
+    path: 'product-details/:id',
     component: ProductDetailsComponent,
     data: { title: 'Detalhe do Produto' },
   },
@@ -34,13 +34,13 @@ const routes: Routes = [
     data: { title: 'Adicionar Produto' },
   },
   {
-    path: 'product-edit/:code',
+    path: 'product-edit/:id',
     component: ProductEditComponent,
     data: { title: 'Editar o Produto' },
 
   },
   //{ path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: '', redirectTo: '/products', pathMatch: 'full' },
+  { path: '', redirectTo: 'products', pathMatch: 'full' },
 ];
 
 @NgModule({

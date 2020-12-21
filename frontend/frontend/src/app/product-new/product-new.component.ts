@@ -30,10 +30,10 @@ export class ProductNewComponent implements OnInit {
     this.isLoadingResults = true;
     this.api.addProduct(form).subscribe(
       (res) => {
-        const code = res['code'];
+        const id = res['id'];
         this.isLoadingResults = false;
-        console.log("debug" + code);
-        this.router.navigate(['/product-details', code]);
+        console.log("debug" + id);
+        this.router.navigate(['/product-details', id]);
 
       },
       (err) => {

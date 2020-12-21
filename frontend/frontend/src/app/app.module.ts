@@ -39,7 +39,6 @@ import { LoginComponent } from './login/login.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
@@ -55,6 +54,7 @@ import { LoginComponent } from './login/login.component';
     MatTableModule,
     MatToolbarModule,
     LayoutModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,11 +1,13 @@
 package com.malkon.JavaWebDeveloperCRUD.domain.dto;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 public class ProductDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	private UUID id;
 	private String code;
 	private String description;
 	private String department;
@@ -15,13 +17,22 @@ public class ProductDto implements Serializable {
 	public ProductDto() {
 	}
 
-	public ProductDto(String code, String description, String department, Double price, Boolean status) {
+	public ProductDto(UUID id, String code, String description, String department, Double price, Boolean status) {
 		super();
+		this.id = id;
 		this.code = code;
 		this.description = description;
 		this.department = department;
 		this.price = price;
 		this.status = status;
+	}
+	
+	public UUID getId() {
+		return id;
+	}
+
+	public void setId(UUID id) {
+		this.id = id;
 	}
 
 	public String getCode() {

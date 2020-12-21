@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -33,15 +35,15 @@ public class ProductService {
 			List<Department> productDepartment = product.getDepartments();
 			for (Department department : productDepartment)
 				departmentName = department.getName();
-			ProductDto productDto = new ProductDto(product.getCode(), product.getDescription(), departmentName,
+			ProductDto productDto = new ProductDto(product.getId(), product.getCode(), product.getDescription(), departmentName,
 					product.getPrice(), product.getStatus());
 			productDtoList.add(productDto);
 		}
 		return productDtoList;
 	}
 
-	public Product find(String code) {
-		Optional<Product> product = productRepository.findByCode(code);
+	public Product find(UUID id) {
+		Optional<Product> product = productRepository.findById(id);
 		return product.orElseThrow();
 	}
 
@@ -58,16 +60,16 @@ public class ProductService {
 		return productRepository.save(product);
 	}
 
-	public Product update(ProductDto productDto, String code) {
-		Product newProduct = find(code);
+	public Product update(ProductDto productDto, UUID id) {
+		Product newProduct = find(id);
 		updateData(newProduct, productDto);
 		return productRepository.save(newProduct);
 	}
 
-	public void delete(String code) {
-		find(code);
+	public void delete(UUID id) {
+		find(id);
 		try {
-			productRepository.deleteByCode(code);
+			productRepository.deleteByCode(id);
 		} catch (Exception e) {
 			throw new DataIntegrityViolationException("Não foi possível excluir o produto", e);
 		}

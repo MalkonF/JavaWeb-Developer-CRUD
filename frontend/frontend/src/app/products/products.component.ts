@@ -10,6 +10,7 @@ import { ApiService } from '../service/api.service';
 })
 export class ProductsComponent implements OnInit {
   displayedColumns: string[] = [
+    'id',
     'code',
     'description',
     'department',
@@ -22,6 +23,7 @@ export class ProductsComponent implements OnInit {
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {
+    
     this.api.getProducts().subscribe(
       (res) => {
         this.dataSource = res;

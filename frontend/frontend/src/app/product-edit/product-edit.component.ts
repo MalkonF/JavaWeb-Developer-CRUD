@@ -9,6 +9,7 @@ import { ApiService } from '../service/api.service';
   styleUrls: ['./product-edit.component.css'],
 })
 export class ProductEditComponent implements OnInit {
+  id: string = '';
   code: String = '';
   productForm: FormGroup;
   description: String = '';
@@ -24,18 +25,20 @@ export class ProductEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getProduct(this.route.snapshot.params['code']);
+    this.getProduct(this.route.snapshot.params['id']);
     this.productForm = this.formBuilder.group({
+      'id':'',
       'code': [null, Validators.required],
       'description': [null, Validators.required],
       'price': [null, Validators.required],
     });
   }
 
-  getProduct(code) {
-    this.api.getProduct(code).subscribe((data) => {
-      this.code = data.code;
+  getProduct(id) {
+    this.api.getProduct(id).subscribe((data) => {
+      this.id = data.id;
       this.productForm.setValue({
+        id: data.id,
         code: data.code,
         description: data.description,
         price: data.price,
@@ -45,10 +48,10 @@ export class ProductEditComponent implements OnInit {
 
   updateProduct(form: NgForm) {
     this.isLoadingResults = true;
-    this.api.updateProduct(this.code, form).subscribe(
+    this.api.updateProduct(this.id, form).subscribe(
       (res) => {
         this.isLoadingResults = false;
-        this.router.navigate(['/product-details/' + this.code]);
+        this.router.navigate(['/product-details/' + this.id]);
       },
       (err) => {
         console.log(err);
