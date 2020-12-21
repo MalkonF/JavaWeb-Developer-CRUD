@@ -15,6 +15,7 @@ export class ProductEditComponent implements OnInit {
   description: String = '';
   department: String;
   price: number = null;
+  status: boolean = true;
 
   isLoadingResults = false;
   constructor(
@@ -31,6 +32,7 @@ export class ProductEditComponent implements OnInit {
       code: [null, Validators.required],
       description: [null, Validators.required],
       price: [null, Validators.required],
+      status: [null, Validators.required],
     });
   }
 
@@ -41,8 +43,8 @@ export class ProductEditComponent implements OnInit {
         id: data.id,
         code: data.code,
         description: data.description,
-
         price: data.price,
+        status: data.status,
       });
     });
   }

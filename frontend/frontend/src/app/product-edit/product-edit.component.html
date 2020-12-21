@@ -36,6 +36,20 @@
       />
     </mat-form-field>
 
+    <label id="example-radio-group">Status</label>
+    <mat-radio-group
+      class="example-radio-group"
+      aria-label="Select an option"
+      formControlName="status"
+    >
+      <mat-radio-button class="example-radio-button" value="true"
+        >Ativo</mat-radio-button
+      >
+      <mat-radio-button class="example-radio-button" value="false"
+        >Inativo</mat-radio-button
+      >
+    </mat-radio-group>
+
     <button
       type="submit"
       [disabled]="!productForm.valid"
