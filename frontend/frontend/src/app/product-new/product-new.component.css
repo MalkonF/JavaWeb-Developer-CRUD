@@ -1,3 +1,14 @@
-.container {
-  margin-left: 220px;
+form,
+h3 {
+  margin-left: 18%;
+}
+.example-radio-group {
+  display:inline;
+  color:grey;
+}
+
+.example-radio-button {
+  margin: 5px;
+  
+   
 }

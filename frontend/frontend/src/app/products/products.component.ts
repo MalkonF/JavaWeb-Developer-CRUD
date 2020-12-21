@@ -16,14 +16,13 @@ export class ProductsComponent implements OnInit {
     'department',
     'price',
     'status',
-    'acao'
+    'acao',
   ];
   dataSource: Product[];
   isLoadingResults = false;
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {
-    
     this.api.getProducts().subscribe(
       (res) => {
         this.dataSource = res;

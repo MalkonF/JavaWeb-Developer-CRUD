@@ -1,54 +1,68 @@
+<div class="container">
+  <app-menu></app-menu>
+</div>
 <div>
   <h3>Adicionar Novo Produto</h3>
 </div>
-  <form
-    class="example-container"
-    [formGroup]="productForm"
-    (ngSubmit)="addProduct(productForm.value)"
-  >
-    <mat-form-field>
-      <input matInput name="code" placeholder="Código" formControlName="code" />
-    </mat-form-field>
-    <mat-form-field>
-      <textarea
-        matInput
-        name="description"
-        placeholder="Descrição do Produto"
-        formControlName="description"
-      ></textarea>
-    </mat-form-field>
-    <mat-form-field>
-      <input
-        matInput
-        name="departments"
-        placeholder="Departamentos"
-        formControlName="department"
-      />
-    </mat-form-field>
-    <mat-form-field>
-      <input
-        matInput
-        name="price"
-        placeholder="Preço do Produto"
-        formControlName="price"
-      />
-    </mat-form-field>
-    <mat-form-field>
-      <input
-        matInput
-        name="status"
-        placeholder="Status"
-        formControlName="status"
-      />
-    </mat-form-field>
+<form
+  class="example-container"
+  [formGroup]="productForm"
+  (ngSubmit)="addProduct(productForm.value)"
+>
+  <mat-form-field>
+    <input matInput name="code" placeholder="Código" formControlName="code" />
+  </mat-form-field>
+  <mat-form-field>
+    <textarea
+      matInput
+      name="description"
+      placeholder="Descrição do Produto"
+      formControlName="description"
+    ></textarea>
+  </mat-form-field>
 
-    <button
-      type="submit"
-      [disabled]="!productForm.valid"
-      mat-button
-      color="primary"
+  <mat-form-field appearance="fill">
+    <mat-label>Selecione uma opção</mat-label>
+    <select matNativeControl required formControlName="department">
+      <mat-option>Nenhuma</mat-option>
+      <option value="Alimentos e Bebidas">Alimentos e Bebidas</option>
+      <option value="Apps e Jogos">Apps e Jogos</option>
+      <option value="Apps e Jogos">Apps e Jogos</option>
+      <option value="Bebês">Bebês</option>
+      <option value="Beleza">Beleza</option>
+      <option value="Brinquedos e Jogos">Brinquedos e Jogos</option>
+      <option value="Eletrodomésticos">Eletrodomésticos</option>
+      <option value="Eletrônicos">Eletrônicos</option>
+      <option value="Outros">Outros</option>
+    </select>
+  </mat-form-field>
+  <mat-form-field>
+    <input
+      matInput
+      name="price"
+      placeholder="Preço do Produto"
+      formControlName="price"
+    />
+  </mat-form-field>
+  <label id="example-radio-group">Status</label>
+  <mat-radio-group
+    class="example-radio-group"
+    aria-label="Select an option"
+    formControlName="status"
+  >
+    <mat-radio-button class="example-radio-button" value="true"
+      >True</mat-radio-button
     >
-      Adicionar
-    </button>
-  </form>
-<!--</div>-->
+    <mat-radio-button class="example-radio-button" value="false"
+      >False</mat-radio-button
+    >
+  </mat-radio-group>
+  <button
+    type="submit"
+    [disabled]="!productForm.valid"
+    mat-button
+    color="primary"
+  >
+    Adicionar
+  </button>
+</form>

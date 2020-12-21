@@ -15,6 +15,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { MatIconModule } from '@angular/material/icon';
 
@@ -35,7 +37,7 @@ import { LoginComponent } from './login/login.component';
     ProductNewComponent,
     ProductEditComponent,
     MenuComponent,
-    //LoginComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,8 +55,10 @@ import { LoginComponent } from './login/login.component';
     MatSidenavModule,
     MatTableModule,
     MatToolbarModule,
+    MatRadioModule,
+    MatFormFieldModule,
     LayoutModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

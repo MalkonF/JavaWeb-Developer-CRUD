@@ -18,8 +18,7 @@ public interface ProductRepository extends JpaRepository<Product, UUID> {
 	List<Product> findAll();
 
 	Optional<Product> findById(UUID id);
-	
-	
+
 	@Transactional
 	void deleteByCode(UUID id);
 

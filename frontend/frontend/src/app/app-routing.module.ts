@@ -8,13 +8,13 @@ import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 
 const routes: Routes = [
-  //{
-   // path: 'login',
-   // component: LoginComponent,
-   // data: { title: 'Login' },
- // },
   {
-   path: 'menu',
+    path: 'login',
+    component: LoginComponent,
+    data: { title: 'Login' },
+  },
+  {
+    path: 'menu',
     component: MenuComponent,
     data: { title: 'Menu' },
   },
@@ -37,10 +37,8 @@ const routes: Routes = [
     path: 'product-edit/:id',
     component: ProductEditComponent,
     data: { title: 'Editar o Produto' },
-
   },
- // { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: '', redirectTo: 'products', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({

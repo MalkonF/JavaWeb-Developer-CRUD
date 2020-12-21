@@ -34,7 +34,7 @@ public class ProductRepositoryTest {
 		Product product = new Product(null, "TTG6", "Camiseta polo fibra", 65.90, true);
 		productRepository.save(product);
 		Integer countProduct = productRepository.findAll().size();
-		assertEquals(1, countProduct - 12);
+		assertEquals(1, countProduct - 14);
 		Product product1 = productRepository.findProductByDescription("Camiseta polo fibra");
 		assertNotNull(product1);
 		assertEquals(product, product1);
@@ -45,7 +45,7 @@ public class ProductRepositoryTest {
 		Product product = new Product(null, "QQU", "Quadro Sala Modernista", 120.0, true);
 		productRepository.save(product);
 		Integer countProduct = productRepository.findAll().size();
-		assertEquals(1, countProduct - 12);
+		assertEquals(1, countProduct - 13);
 		Product product1 = productRepository.findProductByDescription("Meia Socks Algodao");
 		assertNull(product1);
 	}

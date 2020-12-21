@@ -26,7 +26,7 @@ public class DepartmentRepositoryTest {
 		Department department = new Department(null, 12, "Laticinios");
 		departmentRepository.save(department);
 		Integer countDepartment = departmentRepository.findAll().size();
-		assertEquals(1, countDepartment - 9); // 9 departments foram instanciados para popular a base de dados
+		assertEquals(1, countDepartment - 10); // 9 departments foram instanciados para popular a base de dados
 	}
 
 	@Test
@@ -45,7 +45,7 @@ public class DepartmentRepositoryTest {
 		Department department = new Department(null, 40, "Laticinio");
 		departmentRepository.save(department);
 		Integer countDepartment = departmentRepository.findAll().size();
-		assertEquals(1, countDepartment - 9);
+		assertEquals(1, countDepartment - 11);
 		Department department1 = departmentRepository.findByName("Frutas");
 		assertNull(department1);
 	}

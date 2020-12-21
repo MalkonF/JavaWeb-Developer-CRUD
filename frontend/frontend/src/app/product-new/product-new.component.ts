@@ -19,11 +19,11 @@ export class ProductNewComponent implements OnInit {
 
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
-      'code': [null, Validators.required],
-      'description': [null, [Validators.required, Validators.minLength(4)]],
-      'department': [null, [Validators.required]],
-     'price': [null, Validators.required],
-      'status': [null, Validators.required]
+      code: [null, Validators.required],
+      description: [null, [Validators.required, Validators.minLength(4)]],
+      department: [null, [Validators.required]],
+      price: [null, Validators.required],
+      status: [null, Validators.required],
     });
   }
   addProduct(form: NgForm) {
@@ -32,9 +32,8 @@ export class ProductNewComponent implements OnInit {
       (res) => {
         const id = res['id'];
         this.isLoadingResults = false;
-        console.log("debug" + id);
+        console.log('debug' + id);
         this.router.navigate(['/product-details', id]);
-
       },
       (err) => {
         console.log(err);
