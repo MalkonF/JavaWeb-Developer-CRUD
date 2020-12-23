@@ -1,5 +1,6 @@
 package com.malkon.JavaWebDeveloperCRUD.domain;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,10 @@ public class ProductTest {
 		assertEquals("Tv LG 48 pol", product.getDescription());
 		assertEquals(1340.99, product.getPrice());
 		assertEquals(true, product.getStatus());
+		
+		assertTrue(product.getDescription().equalsIgnoreCase("Tv lg 48 pol"));
+		assertTrue(product.getCode().equalsIgnoreCase("45DE"));
+		
 	}
 
 }
