@@ -13,5 +13,5 @@ public class ClientTest {
 		assertEquals("Linus Torvalds", client.getName());
 		assertTrue(client.getName().equalsIgnoreCase("LinUS TorvaldS"));
 	}
-
+	
 }

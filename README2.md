@@ -90,6 +90,7 @@ Para iniciar entre com:
 
 ```
  cd JavaWeb-Developer-CRUD/frontend/frontend
+ npm install
  ng serve
  Acesse pelo endereço: localhost:4200
 ```
